@@ -1,0 +1,4 @@
+<button class="btn btn-primary" (click)="goToLogin()">Back</button>
+<div *ngFor="let movie of moviesList; let i = index">
+    <app-movie-card [movie]="movie"></app-movie-card>
+</div>

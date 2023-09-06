@@ -1,0 +1,12 @@
+<button class="btn btn-primary" (click)="goToCatalog()">Back</button>
+<div>
+    <img [src]="'https://image.tmdb.org/t/p/original/'+movie?.poster_path">
+    <img [src]="'https://image.tmdb.org/t/p/original/'+movie?.backdrop_path">
+    <p>{{movie?.title}}</p>
+    <p *ngIf="movie?.adult">18+</p>
+    <p><span *ngFor="let genre of genre_list">{{genre.name}}</span></p>
+    <p>{{movie?.overview}}</p>
+    <p>{{movie?.release_date}}</p>
+    <p>{{movie?.original_language}}</p>
+    <p>{{movie?.vote_average}}</p>
+<div>

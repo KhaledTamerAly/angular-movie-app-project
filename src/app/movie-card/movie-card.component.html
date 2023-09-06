@@ -1,0 +1,8 @@
+<div class="Card" (click)="goToDetails()">
+    <img [src]="'https://image.tmdb.org/t/p/original/'+movie?.poster_path">
+    <p>{{movie?.title}}</p>
+    <p *ngIf="movie?.adult">18+</p>
+    <p>{{movie?.release_date}}</p>
+    <p>{{movie?.original_language}}</p>
+    <p>{{movie?.vote_average}}</p>
+<div>
