@@ -1,12 +1,35 @@
 img {
-    width: 200px;
-    height: 250px;
+    width: 150px;
+    height: 200px;
+    position: relative;
+    margin-top: 5px;
+    left: 25px;
+}
+
+.Card img {
+    opacity: 0.85;
+}
+
+.Card:hover img {
+    opacity: 1;
 }
 
 .Card {
-    background-color: grey;
+    background-color: rgb(241, 236, 226);
+    width: 200px;
+    height: 300px;
+    box-shadow: 0px 0px 5px 1px white;
+    cursor: pointer;
+    margin: 10px;
+}
+
+.Card:hover {
+    box-shadow: 0px 0px 10px 5px white;
 }
 
 p {
     text-align: center;
+    font-style: italic;
+    font-family: cursive;
+    margin: 0;
 }

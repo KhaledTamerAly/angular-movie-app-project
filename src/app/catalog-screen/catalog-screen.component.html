@@ -1,4 +1,9 @@
-<button class="btn btn-primary" (click)="goToLogin()">Back</button>
-<div *ngFor="let movie of moviesList; let i = index">
-    <app-movie-card [movie]="movie"></app-movie-card>
+<div class="catalog">
+    
+    <button class="btn btn-primary" (click)="goToLogin()">Log out</button>
+    <h3>Top Rated Movies of all Time</h3>
+    <div class="movies">
+        <app-movie-card *ngFor="let movie of moviesList; let i = index" [movie]="movie"></app-movie-card>
+    </div>
 </div>
+
