@@ -59,7 +59,6 @@ describe('CatalogScreenComponent', () => {
       expect(moviesService.getMovies).toHaveBeenCalled();
       expect(component.moviesList).toEqual([movie]);
       const movieCards = fixture.debugElement.nativeElement.querySelectorAll('app-movie-card');
-      console.log(movieCards);
       expect(movieCards.length).toEqual(component.moviesList.length);
       for (let i = 0; i < movieCards.length; i++) {
         expect(movieCards[i].textContent).toContain(component.moviesList[i].title);

@@ -12,6 +12,7 @@ import { LoginService } from '../login/login.service';
 export class CatalogScreenComponent implements OnInit{
 
   moviesList: Movie[] = [];
+  loading: boolean = true;
 
   constructor(private movieService: MoviesService, private router: Router, private loginService: LoginService) {
     
@@ -20,7 +21,7 @@ export class CatalogScreenComponent implements OnInit{
   ngOnInit(): void {
     this.movieService.getMovies().then((resolvedValue: any) => {
       this.moviesList = resolvedValue.results;
-      console.log(this.moviesList);
+      this.loading = false;
     });
   }
   goToLogin() {

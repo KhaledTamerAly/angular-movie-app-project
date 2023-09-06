@@ -33,6 +33,7 @@ input.ng-invalid.ng-touched {
     z-index: 1;
     background-color: white;
     opacity: 0.95;
+    border-radius: 5%;
 }
 
 .row {

@@ -6,6 +6,16 @@
     display: flex;
     flex-wrap: wrap;
 }
+.spinner {
+    width: 50%;
+    margin: 0px auto;
+    padding-top: 20%;
+    padding-bottom: 20%;
+}
+.spinner mat-progress-spinner {
+    width: 50%;
+    margin: 0px auto;
+}
 .btn {
     margin-top: 0.5%;
     left: 50%;

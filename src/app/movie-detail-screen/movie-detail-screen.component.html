@@ -1,12 +1,25 @@
-<button class="btn btn-primary" (click)="goToCatalog()">Back</button>
-<div>
-    <img [src]="'https://image.tmdb.org/t/p/original/'+movie?.poster_path">
-    <img [src]="'https://image.tmdb.org/t/p/original/'+movie?.backdrop_path">
-    <p>{{movie?.title}}</p>
-    <p *ngIf="movie?.adult">18+</p>
-    <p><span *ngFor="let genre of genre_list">{{genre.name}}</span></p>
-    <p>{{movie?.overview}}</p>
-    <p>{{movie?.release_date}}</p>
-    <p>{{movie?.original_language}}</p>
-    <p>{{movie?.vote_average}}</p>
+<div class="detail">
+    <div class="spinner" *ngIf="this.loading"><mat-progress-spinner mode="indeterminate"></mat-progress-spinner></div>
+    <img *ngIf="!loading" class="backdrop" [src]="'https://image.tmdb.org/t/p/original/'+movie?.backdrop_path">
+    <h3>{{'" '+ movie?.tagline+ ' "'}}</h3>
+    <div class="posterHover" (mouseenter)="onHover()" (mouseleave)="onLeave()">
+        <div *ngIf="!hoveringOverPoster" class="posterAdd"><h4>Add to watch list</h4></div>
+        <img *ngIf="!loading" class="poster" [src]="'https://image.tmdb.org/t/p/original/'+movie?.poster_path">
+    </div>
+    
+    <div *ngIf="!loading" class="info">
+        <p>{{movie?.title}}</p>
+        <p *ngIf="movie?.adult">18+</p>
+        <p><span *ngFor="let genre of genre_list">{{genre.name}}</span></p>
+        <p>{{movie?.overview}}</p>
+        <p>{{movie?.release_date}}</p>
+        <p>{{movie?.budget + ' $'}}</p>
+        <p>{{movie?.revenue + ' $'}}</p>
+        <p>{{movie?.runtime + ' mins'}}</p>
+        <p>{{movie?.original_language}}</p>
+        <p>{{movie?.vote_average}}</p>
+    </div>
+    <div class="button">
+        <button class="btn btn-primary" (click)="goToCatalog()">Back to Catalog</button>
+    </div>
 <div>

@@ -14,7 +14,6 @@ export class AppComponent {
   {
     const user = this.loginService.getUser();
     const path = sessionStorage.getItem('path');
-    console.log(path);
     if(path && user)
     {
       this.loginService.currentUser = user;

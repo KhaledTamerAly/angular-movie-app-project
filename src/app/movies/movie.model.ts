@@ -14,4 +14,8 @@ export interface Movie {
     vote_average: number;
     vote_count: number;
     genres: {id: number, name: string}[]
+    budget: number;
+    revenue: number;
+    runtime: number;
+    tagline: string;
 }

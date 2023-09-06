@@ -1,15 +1,81 @@
-img {
+.detail {
+    background-color: black;
+    padding-top: 16%;
+}
+.posterHover {
+    width: 200px;
+    height: 250px;
+    position: absolute;
+    z-index: 1;
+    top: 28%;
+    left: 33%;
+    transition: transform 0.2s ease-in-out;
+    cursor: pointer;
+}
+.posterHover:hover {
+    transform: translateY(-15px);
+}
+.posterAdd {
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 0.9;
+}
+.posterAdd h4{
+    color: whitesmoke;
+    text-align: center;
+    margin-top: 50%;
+}
+img.poster {
     width: 200px;
     height: 250px;
 }
-
-.Card {
-    background-color: grey;
+img.backdrop {
+    width: 60%;
+    height: 50%;
+    position: relative;
+    top: 0;
+    left: 40%;
 }
-
+h3 {
+    position: absolute;
+    z-index: 1;
+    top: 85%;
+    left: 50%;
+    color: white;
+    font-style: italic;
+    font-family: cursive;
+}
 p {
     text-align: center;
+    margin: 15px;
+    color: wheat;
 }
 span {
     margin-right: 10px;
+}
+
+.spinner {
+    width: 50%;
+    margin: 0px auto;
+    padding-top: 20%;
+    padding-bottom: 20%;
+}
+.spinner mat-progress-spinner {
+    width: 50%;
+    margin: 0px auto;
+}
+
+.info {
+    width: 35%;
+    position: absolute;
+    left: 0;
+    top: 2%;
+}
+.button {
+    position: absolute;
+    top: 5%;
+    left: 90%;
 }

@@ -12,17 +12,27 @@ export class MovieDetailScreenComponent implements OnInit{
 
   movie?: Movie;
   genre_list?: {id: number, name: string}[];
+  loading: boolean = true;
+  hoveringOverPoster: boolean = false;
 
   constructor(private movieService: MoviesService, private route: ActivatedRoute, private router: Router){
   }
 
+  onHover()
+  {
+    this.hoveringOverPoster = true;
+  }
+  onLeave()
+  {
+    this.hoveringOverPoster = false;
+  }
   ngOnInit(): void {
     let movieId = this.route.snapshot.params['id'];
     this.movieService.getMovieById(movieId).then(
       async (movie: any) => {
         this.movie = movie;
         this.genre_list = this.movie?.genres;
-        console.log(this.genre_list);
+        this.loading = false;
       }
     );
   }
