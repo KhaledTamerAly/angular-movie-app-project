@@ -1,10 +1,8 @@
 <div class="catalog">
-    <button class="btn btn-success" (click)="goToWatchlist()">Watchlist</button>
-    <button class="btn btn-primary" (click)="goToLogin()">Log out</button>
-    <h3>Top Rated Movies of all Time</h3>
+    <button class="btn btn-success" (click)="goToCatalog()">Catalog</button>
+    <h3>Watchlist</h3>
     <div class="spinner" *ngIf="this.loading"><mat-progress-spinner mode="indeterminate"></mat-progress-spinner></div>
     <div class="movies">
         <app-movie-card *ngFor="let movie of moviesList; let i = index" [movie]="movie"></app-movie-card>
     </div>
 </div>
-

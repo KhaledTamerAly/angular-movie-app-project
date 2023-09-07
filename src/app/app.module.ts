@@ -14,11 +14,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { GuardService } from './login/guard.service';
+import { UsersService } from './user/users.service';
+import { WatchlistScreenComponent } from './watchlist-screen/watchlist-screen.component';
 
 const routes: Routes = [
   {path: '', component: LoginScreenComponent},
   {path: 'catalog', canActivate: [GuardService],component: CatalogScreenComponent},
   {path: 'movie/:id', canActivate: [GuardService],component: MovieDetailScreenComponent},
+  {path: 'watchlist', canActivate: [GuardService],component: WatchlistScreenComponent},
   {path: '**', redirectTo: ''}
 ];
 
@@ -29,6 +32,7 @@ const routes: Routes = [
     LoginScreenComponent,
     MovieDetailScreenComponent,
     MovieCardComponent,
+    WatchlistScreenComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,7 +42,7 @@ const routes: Routes = [
     MatProgressSpinnerModule,
     RouterModule.forRoot(routes),
   ],
-  providers: [MoviesService, LoginService, GuardService],
+  providers: [MoviesService, LoginService, GuardService, UsersService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

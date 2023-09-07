@@ -1,18 +1,18 @@
 import {HttpClient} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { UsersService } from '../user/users.service';
 @Injectable()
 export class LoginService {
 
     isLoggedIn: boolean = false;
-    currentUser: {email: string, password: string} | null = null;
+    currentUser: {id: number, email: string, password: string, watchlist: number[]} | null = null;
 
-    constructor(private httpClient: HttpClient, private router: Router){}
+    constructor(private httpClient: HttpClient, private router: Router, private usersService: UsersService){}
 
-    async login(credntials: {email: string, password: string})
+    login(credntials: {email: string, password: string})
     {
-        const data = await this.httpClient.get('assets/Users.csv', {responseType: 'text'}).toPromise();
-        const users = this.parseData(data);
+        const users = this.usersService.getUsers();
         for(let user of users)
         {
             if(user.email === credntials?.email)
@@ -21,8 +21,10 @@ export class LoginService {
                 {
                     this.isLoggedIn = true;
                     this.currentUser = {
+                        id: user.id,
                         email: credntials.email,
-                        password: credntials.password
+                        password: credntials.password,
+                        watchlist: user.watchlist
                     }
                     sessionStorage.setItem('user', JSON.stringify(this.currentUser));
                     sessionStorage.setItem('path', '/catalog');
@@ -35,6 +37,19 @@ export class LoginService {
         }
         return 'not found';
     }
+    signup(credntials: {email: string, password: string})
+    {
+        const users = this.usersService.getUsers();
+        for(let user of users)
+        {
+            if(user.email === credntials?.email)
+            {
+                return 'exists';
+            }
+        }
+        this.usersService.addUser(credntials);
+        return 'success';
+    }
     getUser() {
         const user = sessionStorage.getItem('user');
         return user ? JSON.parse(user): null;
@@ -43,20 +58,7 @@ export class LoginService {
     {
         this.isLoggedIn = false;
         this.currentUser = null;
-        sessionStorage.clear();
-    }
-    private parseData(data: any): {email: string, password: string}[]
-    {
-        let users:{email: string, password: string}[] = []
-        const rows = data.split("\n");
-        for(let i = 1; i<rows.length -1;i++)
-        {
-            let user = {
-                email: rows[i].split(",")[0],
-                password: rows[i].split(",")[1].replace("\r", "")
-            }
-            users.push(user);
-        }
-        return users;
+        sessionStorage.removeItem('path');
+        sessionStorage.removeItem('user');
     }
 }

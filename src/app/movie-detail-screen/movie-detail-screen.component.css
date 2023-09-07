@@ -1,6 +1,6 @@
 .detail {
     background-color: black;
-    padding-top: 16%;
+    padding-top: 18%;
 }
 .posterHover {
     width: 200px;
@@ -60,7 +60,7 @@ span {
 .spinner {
     width: 50%;
     margin: 0px auto;
-    padding-top: 20%;
+    padding-top: 10%;
     padding-bottom: 20%;
 }
 .spinner mat-progress-spinner {

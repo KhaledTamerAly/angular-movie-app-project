@@ -1,9 +1,9 @@
 <div class="detail">
     <div class="spinner" *ngIf="this.loading"><mat-progress-spinner mode="indeterminate"></mat-progress-spinner></div>
     <img *ngIf="!loading" class="backdrop" [src]="'https://image.tmdb.org/t/p/original/'+movie?.backdrop_path">
-    <h3>{{'" '+ movie?.tagline+ ' "'}}</h3>
-    <div class="posterHover" (mouseenter)="onHover()" (mouseleave)="onLeave()">
-        <div *ngIf="!hoveringOverPoster" class="posterAdd"><h4>Add to watch list</h4></div>
+    <h3 *ngIf="!loading">{{'" '+ movie?.tagline+ ' "'}}</h3>
+    <div class="posterHover" (mouseenter)="onHover()" (mouseleave)="onLeave()" (click)="addToWatchList()">
+        <div *ngIf="!hoveringOverPoster && !loading" class="posterAdd"><h4>{{isAdded ? 'In Watchlist': 'Add to watch list'}}</h4></div>
         <img *ngIf="!loading" class="poster" [src]="'https://image.tmdb.org/t/p/original/'+movie?.poster_path">
     </div>
     

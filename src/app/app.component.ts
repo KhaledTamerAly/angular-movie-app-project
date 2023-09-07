@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { LoginService } from './login/login.service';
 import { Router } from '@angular/router';
+import { UsersService } from './user/users.service';
 
 @Component({
   selector: 'app-root',
@@ -10,8 +11,9 @@ import { Router } from '@angular/router';
 export class AppComponent {
   title = 'movie-app-project';
 
-  constructor(private loginService: LoginService, private router: Router)
+  constructor(private loginService: LoginService, private router: Router, private usersService: UsersService)
   {
+    this.usersService.initUsers();
     const user = this.loginService.getUser();
     const path = sessionStorage.getItem('path');
     if(path && user)

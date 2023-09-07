@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { MoviesService } from '../movies/movies.service';
 import { Movie } from '../movies/movie.model';
 import { Router } from '@angular/router';
@@ -6,12 +6,11 @@ import { LoginService } from '../login/login.service';
 import { UsersService } from '../user/users.service';
 
 @Component({
-  selector: 'app-catalog-screen',
-  templateUrl: './catalog-screen.component.html',
-  styleUrls: ['./catalog-screen.component.css']
+  selector: 'app-watchlist-screen',
+  templateUrl: './watchlist-screen.component.html',
+  styleUrls: ['./watchlist-screen.component.css']
 })
-export class CatalogScreenComponent implements OnInit{
-
+export class WatchlistScreenComponent {
   moviesList: Movie[] = [];
   loading: boolean = true;
 
@@ -20,19 +19,19 @@ export class CatalogScreenComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    console.log(this.usersService.getUsers());
+    const watchlist: number[] = this.usersService.getWatchlist(this.usersService.getCurrentUser());
     this.movieService.getMovies().then((resolvedValue: any) => {
-      this.moviesList = resolvedValue.results;
+      let movies = resolvedValue.results;
+      for(let movie of movies)
+      {
+        if(watchlist.includes(parseInt(movie.id)))
+          this.moviesList.push(movie);
+      }
       this.loading = false;
     });
   }
-  goToLogin() {
-    this.router.navigate(['/']);
-    this.loginService.logout();
-  }
-  goToWatchlist()
-  {
-    sessionStorage.setItem('path', '/watchlist');
-    this.router.navigate(['/watchlist']);
+  goToCatalog() {
+    sessionStorage.setItem('path', '/catalog');
+    this.router.navigate(['/catalog']);
   }
 }
