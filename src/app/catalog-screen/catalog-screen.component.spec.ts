@@ -7,6 +7,8 @@ import { LoginService } from '../login/login.service';
 import { HttpClient, HttpHandler } from '@angular/common/http';
 import { Movie } from '../movies/movie.model';
 import { MovieCardComponent } from '../movie-card/movie-card.component';
+import { UsersService } from '../user/users.service';
+import { MatProgressSpinner } from '@angular/material/progress-spinner';
 const movie: Movie = {
   adult: false,
   backdrop_path: "/tmU7GeKVybMWFButWEGl2M4GeiP.jpg",
@@ -25,7 +27,11 @@ const movie: Movie = {
   video: false,
   vote_average: 8.7,
   vote_count: 18551,
-  genres:[]
+  genres:[],
+  runtime:200,
+  revenue:200,
+  budget:100,
+  tagline: "I"
 };
 describe('CatalogScreenComponent', () => {
   let component: CatalogScreenComponent;
@@ -38,19 +44,19 @@ describe('CatalogScreenComponent', () => {
     };
 
     TestBed.configureTestingModule({
-      declarations: [CatalogScreenComponent, MovieCardComponent],
-      providers: [{ provide: MoviesService, useValue: moviesServiceMock }, LoginService, HttpClient, HttpHandler]
+      declarations: [CatalogScreenComponent, MovieCardComponent, MatProgressSpinner],
+      providers: [{ provide: MoviesService, useValue: moviesServiceMock }, LoginService, HttpClient, HttpHandler, UsersService]
     });
     fixture = TestBed.createComponent(CatalogScreenComponent);
     component = fixture.debugElement.componentInstance;
     moviesService = TestBed.inject(MoviesService);
   });
 
-  it('should create', () => {
+  it('catalog screen should created', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should be loaded into DOM correctly', fakeAsync(() => {
+  it('movies should be loaded into DOM correctly', fakeAsync(() => {
     fixture.detectChanges();
     tick();
     fixture.detectChanges();
@@ -66,7 +72,7 @@ describe('CatalogScreenComponent', () => {
     });
   }));
 
-  it('should have the list of movies and init correctly', async(() => {
+  it('should have the list of movies and initialized correctly', async(() => {
     fixture.detectChanges();
 
     fixture.whenStable().then(() => {
