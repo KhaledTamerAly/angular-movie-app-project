@@ -2,6 +2,7 @@ import { Component, ElementRef, OnInit, QueryList, Renderer2, ViewChildren } fro
 import { Router } from '@angular/router';
 import { UsersService } from '../services/users.service';
 import { LoginService } from '../services/login.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-login-screen',
@@ -15,7 +16,7 @@ export class LoginScreenComponent implements OnInit{
   isLogin: boolean = true;
   @ViewChildren('rootDiv') divs?: QueryList<ElementRef>;
 
-  constructor(private loginService: LoginService, private renderer: Renderer2, private router: Router, private userService: UsersService){
+  constructor(private loginService: LoginService, private renderer: Renderer2, private router: Router, private userService: UsersService, public translate: TranslateService){
   }
   ngOnInit()
   {
@@ -23,27 +24,10 @@ export class LoginScreenComponent implements OnInit{
   }
   changeLang()
   {
-    this.isLangEnglish = !this.isLangEnglish;
-    if(this.isLangEnglish)
-    {
-      this.divs?.forEach(div=>{
-        this.renderer.setAttribute(div.nativeElement, 'dir', 'ltr');
-      });
-      if(this.failureMessage == ".المستخدم غير موجود")
-        this.failureMessage = "User does not exist.";
-      else if(this.failureMessage === ".كلمة سر خاطئة")
-        this.failureMessage = "Incorrect password.";
-    }
+    if(this.translate.currentLang === 'en')
+      this.translate.use('ar');
     else
-    {
-      this.divs?.forEach(div=>{
-        this.renderer.setAttribute(div.nativeElement, 'dir', 'rtl');
-      });
-      if(this.failureMessage === "User does not exist.")
-        this.failureMessage = ".المستخدم غير موجود";
-      else if (this.failureMessage === "Incorrect password.")
-        this.failureMessage = ".كلمة سر خاطئة";
-    }
+      this.translate.use('en');
   }
   submit(event: any)
   {
@@ -55,7 +39,7 @@ export class LoginScreenComponent implements OnInit{
   signup(event: any) {
     const response: string = this.loginService.signup(event.value);
     if(response === 'exists')
-       this.failureMessage = this.isLangEnglish? "User already exist.": ".المستخدم موجود";
+       this.translate.get(['failAlreadyExists']).subscribe(trans => this.failureMessage = trans);
     else
       { 
         this.failureMessage = null;
@@ -67,48 +51,14 @@ export class LoginScreenComponent implements OnInit{
     console.log(event);
    const response: string = this.loginService.login(event.value);
    if(response === 'not found')
-      this.failureMessage = this.isLangEnglish? "User does not exist.": ".المستخدم غير موجود";
+      this.translate.get(['failNotExists']).subscribe(trans => this.failureMessage = trans);
     else if(response === 'failure')
-      this.failureMessage = this.isLangEnglish ? "Incorrect password.": ".كلمة سر خاطئة";
+      this.translate.get(['failPassword']).subscribe(trans => this.failureMessage = trans);
     else
       this.failureMessage = null;
   }
   switch()
   {
     this.isLogin = !this.isLogin;
-  }
-  getUpperButtonText()
-  {
-    if(this.isLogin)
-    {
-      if(this.isLangEnglish) 
-        return 'Sign up'; 
-      else
-        return 'أفتح حساب';
-    }
-    else
-    {
-      if(this.isLangEnglish) 
-        return 'Log in'; 
-      else 
-        return ' الدخول ';
-    }
-  }
-  getBottomButtonText()
-  {
-    if(!this.isLogin)
-    {
-      if(this.isLangEnglish) 
-        return 'Sign up'; 
-      else
-        return 'أفتح حساب';
-    }
-    else
-    {
-      if(this.isLangEnglish) 
-        return 'Log in'; 
-      else 
-        return ' الدخول ';
-    }
   }
 }

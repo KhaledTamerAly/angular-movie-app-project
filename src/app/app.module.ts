@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {MatProgressSpinner, MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,11 +10,13 @@ import { MovieDetailScreenComponent } from './movie-detail-screen/movie-detail-s
 import { MoviesService } from './services/movies.service';
 import { MovieCardComponent } from './movie-card/movie-card.component';
 import { LoginService } from './services/login.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { GuardService } from './services/guard.service';
 import { UsersService } from './services/users.service';
 import { WatchlistScreenComponent } from './watchlist-screen/watchlist-screen.component';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 @NgModule({
   declarations: [
@@ -31,8 +33,21 @@ import { WatchlistScreenComponent } from './watchlist-screen/watchlist-screen.co
     HttpClientModule,
     FormsModule,
     MatProgressSpinnerModule,
+    TranslateModule.forRoot({
+      defaultLanguage: 'en',
+      loader: {
+        provide: TranslateLoader,
+        useFactory: createTranslate,
+        deps: [HttpClient]
+      }
+    })
   ],
   providers: [MoviesService, LoginService, GuardService, UsersService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+export function createTranslate(http: HttpClient)
+{
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}

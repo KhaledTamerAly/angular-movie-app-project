@@ -6,12 +6,15 @@
         <div class="row button-row">
             <div class="col-xs-8">
                 <button class="btn btn-primary" (click)="changeLang()">
-                    {{!this.isLangEnglish ? 'English': 'عربي'}}
+                    {{"lang" | translate}}
                 </button>
             </div>
             <div class="col-xs-4">
-                <button (click)="switch()" class="btn btn-success col-xs-1" style="float: right;">
-                    {{getUpperButtonText()}}
+                <button *ngIf='isLogin' (click)="switch()" class="btn btn-success col-xs-1" style="float: right;">
+                    {{"buttonSignUp" | translate}}
+                </button>
+                <button *ngIf='!isLogin' (click)="switch()" class="btn btn-success col-xs-1" style="float: right;">
+                    {{"buttonLogin" | translate}}
                 </button>
             </div>
         </div>
@@ -21,7 +24,7 @@
                 <form class="form-class" (ngSubmit)="submit(form)" #form="ngForm">
                     <div class="form-group row" #rootDiv>
                         <div class="col-xs-2 label-class">
-                            <label for="username">{{this.isLangEnglish ? 'Name': 'بريد'}}</label>
+                            <label for="username">{{"username" | translate}}</label>
                         </div>
                         <div class="col-xs-3 input-class">
                             <input class="form-control input" id="username" ngModel name="username" required username #username="ngModel">
@@ -30,7 +33,7 @@
                     
                     <div class="form-group row" #rootDiv>
                         <div class="col-xs-2 label-class">
-                            <label for="email">{{this.isLangEnglish ? 'Email': 'بريد إلكتروني'}}</label>
+                            <label for="email">{{"email" | translate}}</label>
                         </div>
                         <div class="col-xs-3 input-class">
                             <input class="form-control input" id="email" ngModel name="email" required email #email="ngModel">
@@ -38,12 +41,12 @@
                     </div>
                     <div class="row">
                         <div class="col-xs-12">
-                            <p class="help-block" *ngIf="!email.valid && email.touched"> {{this.isLangEnglish ? 'Enter a correct email': 'أدخل البريد الإلكتروني صحيح'}}</p>
+                            <p class="help-block" *ngIf="!email.valid && email.touched"> {{"emailFail" | translate}}</p>
                         </div>
                     </div>
                     <div class="form-group row" #rootDiv>
                         <div class="col-xs-2 label-class">
-                            <label for="password">{{this.isLangEnglish ? 'Password': 'كلمة المرور'}}</label>
+                            <label for="password">{{"password" | translate}}</label>
                         </div>
                         <div class="col-xs-3 input-class">
                             <input class="form-control input" type="password" id="password" ngModel name="password" required>
@@ -52,7 +55,12 @@
                     
                     <div class="row">
                         <div class="col-xs-12">
-                           <button type="submit" class="btn btn-primary button-login" [disabled]="!form.valid">{{getBottomButtonText()}}</button>
+                           <button *ngIf="!isLogin" type="submit" class="btn btn-primary button-login" [disabled]="!form.valid">
+                            {{"buttonSignUp" | translate}}
+                            </button>
+                            <button *ngIf="isLogin" type="submit" class="btn btn-primary button-login" [disabled]="!form.valid">
+                                {{"buttonLogin" | translate}}
+                            </button>
                         </div>
                     </div>
                     <div class="row">

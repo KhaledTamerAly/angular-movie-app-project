@@ -1,0 +1,12 @@
+{
+    "lang": "English",
+    "username":"اسم",
+    "email": "بريد إلكتروني",
+    "password": "كلمة المرور",
+    "emailFail": "أدخل البريد الإلكتروني صحيح",
+    "failAlreadyExists": ".المستخدم موجود",
+    "failNotExists": "المستخدم غير موجود",
+    "failPassword": "كلمة سر خاطئة",
+    "buttonSignUp": "أفتح حساب",
+    "buttonLogin": "الدخول"
+}

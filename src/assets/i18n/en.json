@@ -1,0 +1,12 @@
+{
+    "lang": "عربي",
+    "username":"Name",
+    "email": "Email",
+    "password": "Password",
+    "emailFail": "Enter a correct email",
+    "failAlreadyExists": "User already exist",
+    "failNotExists": "User does not exist",
+    "failPassword": "Incorrect password",
+    "buttonSignUp": "Sign up",
+    "buttonLogin": "Log in"
+}
