@@ -1,8 +1,8 @@
 
 let users = [
-    {id: 0, email: "k@gmail.com", password:"1234", watchlist: []},
-    {id: 1, email: "a@gmail.com", password:"4321", watchlist: []},
-    {id: 2, email: "m@gmail.com", password:"1111", watchlist: []},
+    {username:"Khaled", id: 0, email: "k@gmail.com", password:"1234", watchlist: []},
+    {username:"Aly", id: 1, email: "a@gmail.com", password:"4321", watchlist: []},
+    {username:"Mohamed", id: 2, email: "m@gmail.com", password:"1111", watchlist: []},
 ];
 
 export class UsersService 
@@ -13,12 +13,13 @@ export class UsersService
         if(u === null)
             sessionStorage.setItem('users', JSON.stringify(users));
     }
-    addUser(credentials: {email: string, password: string})
+    addUser(credentials: {username:string, email: string, password: string})
     {
         const u: any = sessionStorage.getItem('users');
         const users: any[] = JSON.parse(u);
 
         users.push({
+            username: credentials.username,
             id: users.length,
             email: credentials.email,
             password: credentials.password,
@@ -26,6 +27,13 @@ export class UsersService
         });
         sessionStorage.removeItem('users');
         sessionStorage.setItem('users', JSON.stringify(users));
+    }
+    getCurrentUsername(): string
+    {
+        const u: any = sessionStorage.getItem('user');
+        const user = JSON.parse(u);
+
+        return user.username;
     }
     getCurrentUser(): number
     {

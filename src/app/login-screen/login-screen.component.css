@@ -1,13 +1,17 @@
 input.ng-invalid.ng-touched {
     border: 1px solid red;
 }
-
+.background-container {
+  overflow: hidden;
+}
 .background {
   background: url("https://asiapeacefilmfestival.com/userfiles/2017/09/Film-gallery-s.jpg") repeat-x;
-  height: 840px;
+  height: 100%;
   width: 5076px;
+  position: fixed;
+  z-index: -1;
   animation: slide 60s linear infinite;
-  filter: blur(3px);
+  filter: blur(3px) brightness(0.5);
 }
 
 @keyframes slide{
@@ -19,76 +23,39 @@ input.ng-invalid.ng-touched {
   }
 }
 
-.background-container {
-    overflow: hidden;
-}
-
-.localization {
-  position: absolute;
-  z-index: 1;
-  top: 5%;
-  left: 92%;
+.btn {
   width: 80px;
 }
-.button-switch {
-  position: absolute;
-  z-index: 1;
-  top: 5%;
-  left: 5%;
-  width: 80px;
-}
-.container {
-    width: 50%;
-    height: 50%;
-    margin: 0px auto;
-    padding-top: 7%;
-    left: 25%;
-    top: 25%;
-    padding-bottom: 7%;
-    position: absolute;
-    z-index: 1;
-    background-color: white;
-    opacity: 0.95;
-    border-radius: 5%;
+.button-row {
+  margin: 1%;
 }
 
-.row.form-group {
-    width: 50%;
-    margin: 10px auto;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: row;
+.label-class {
+  left: 20%;
+}
+.input-class {
+  left: 20%;
 }
 
-.button-class {
-  position: relative;  
-  left: 47%;
+.input {
+  width: 100%;
 }
-.row.button-class div{
-    width: 20%;
-    padding: 0;
-    margin: 0 auto;
+.button-login {
+  margin-left: 45%;
 }
-.row div.label-class {
-    width: 20%;
-    margin: 0 auto;
-    padding: 0;
-    position: relative;
-    top: 5px;
-}
-
-.row div.input-class {
-    width: 80%;
-    margin: 0 auto;
+label {
+  float: right;
+  color: white;
 }
 
 .help-block {
-  padding-left: 8%;
-  width: 100%;
-  text-align: center;
+  margin-left: 44%;
 }
-.help-block-failure {
-  padding-left: 5%;
-  width: 100%;
-  text-align: center;
+
+.form-container {
+  padding-top: 10%;
+}
+
+p {
+  color: white;
 }

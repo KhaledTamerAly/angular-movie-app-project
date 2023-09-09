@@ -1,6 +1,9 @@
 .catalog {
     background-color: black;
 }
+h3 {
+    color: whitesmoke;
+}
 .movies {
     margin-left: 6%;
     display: flex;
@@ -17,26 +20,11 @@
     margin: 0px auto;
 }
 
-.btn.btn-success {
-    position: relative;
-    left: 10%;
-}
-
-.btn.btn-primary {
-    margin-top: 0.5%;
-    left: 50%;
-    margin-left: 80%;
+.btn {
+    margin-top: 10px;
 }
 .background {
     background-color: black;
     width: 100%;
     height: 100%;
-}
-
-
-h3 {
-    position: absolute;
-    top: -10px;
-    left: 40%;
-    color: whitesmoke;
 }

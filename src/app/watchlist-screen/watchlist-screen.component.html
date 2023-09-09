@@ -1,8 +1,11 @@
-<div class="catalog">
-    <button class="btn btn-success" (click)="goToCatalog()">Catalog</button>
-    <h3>Watchlist</h3>
+<div class="container-fluid catalog">
+    <div class="row">
+        <div class="col-xs-5"><h3>Hi, {{username}}</h3></div>
+        <div class="col-xs-6"><h3>Catalog</h3></div>
+        <div class="col-xs-1"><button class="btn btn-primary" (click)="goToCatalog()">Catalog</button></div>
+    </div>
     <div class="spinner" *ngIf="this.loading"><mat-progress-spinner mode="indeterminate"></mat-progress-spinner></div>
-    <div class="movies">
+    <div class="movies row">
         <app-movie-card *ngFor="let movie of moviesList; let i = index" [movie]="movie"></app-movie-card>
     </div>
 </div>

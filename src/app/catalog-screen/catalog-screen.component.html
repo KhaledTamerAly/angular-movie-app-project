@@ -1,9 +1,12 @@
-<div class="catalog">
-    <button class="btn btn-success" (click)="goToWatchlist()">Watchlist</button>
-    <button class="btn btn-primary" (click)="goToLogin()">Log out</button>
-    <h3>Top Rated Movies of all Time</h3>
+<div class="container-fluid catalog">
+    <div class="row">
+        <div class="col-xs-2"><h3>Hi, {{username}}</h3></div>
+        <div class="col-xs-3"><button class="btn btn-success" (click)="goToWatchlist()">Watchlist</button></div>
+        <div class="col-xs-4"><h3>Top Rated Movies of all Time</h3></div>
+        <div class="col-xs-2"><button class="btn btn-primary" (click)="goToLogin()">Log out</button></div>
+    </div>
     <div class="spinner" *ngIf="this.loading"><mat-progress-spinner mode="indeterminate"></mat-progress-spinner></div>
-    <div class="movies">
+    <div class="movies row">
         <app-movie-card *ngFor="let movie of moviesList; let i = index" [movie]="movie"></app-movie-card>
     </div>
 </div>

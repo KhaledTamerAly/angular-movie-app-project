@@ -1,14 +1,14 @@
-import { Component, ElementRef, QueryList, Renderer2, ViewChildren } from '@angular/core';
-import { LoginService } from '../login/login.service';
-import { ActivatedRoute, Router } from '@angular/router';
-import { UsersService } from '../user/users.service';
+import { Component, ElementRef, OnInit, QueryList, Renderer2, ViewChildren } from '@angular/core';
+import { Router } from '@angular/router';
+import { UsersService } from '../services/users.service';
+import { LoginService } from '../services/login.service';
 
 @Component({
   selector: 'app-login-screen',
   templateUrl: './login-screen.component.html',
   styleUrls: ['./login-screen.component.css']
 })
-export class LoginScreenComponent {
+export class LoginScreenComponent implements OnInit{
 
   failureMessage: string | null = null;
   isLangEnglish: boolean = true; 
@@ -16,8 +16,10 @@ export class LoginScreenComponent {
   @ViewChildren('rootDiv') divs?: QueryList<ElementRef>;
 
   constructor(private loginService: LoginService, private renderer: Renderer2, private router: Router, private userService: UsersService){
+  }
+  ngOnInit()
+  {
     this.userService.initUsers();
-    console.log(this.userService.getUsers());
   }
   changeLang()
   {
@@ -62,6 +64,7 @@ export class LoginScreenComponent {
 
    }
   login(event: any) {
+    console.log(event);
    const response: string = this.loginService.login(event.value);
    if(response === 'not found')
       this.failureMessage = this.isLangEnglish? "User does not exist.": ".المستخدم غير موجود";

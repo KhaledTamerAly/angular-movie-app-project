@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { MoviesService } from '../movies/movies.service';
+import { MoviesService } from '../services/movies.service';
 import { Movie } from '../movies/movie.model';
 import { ActivatedRoute, Router} from '@angular/router';
-import { UsersService } from '../user/users.service';
+import { UsersService } from '../services/users.service';
 
 @Component({
   selector: 'app-movie-detail-screen',
@@ -29,6 +29,10 @@ export class MovieDetailScreenComponent implements OnInit{
     this.hoveringOverPoster = false;
   }
   ngOnInit(): void {
+    this.getMovieDetails();
+  }
+  getMovieDetails()
+  {
     let movieId = this.route.snapshot.params['id'];
     const watchlist: number[] = this.usersService.getWatchlist(this.usersService.getCurrentUser());
     if(watchlist.includes(parseInt(movieId)))

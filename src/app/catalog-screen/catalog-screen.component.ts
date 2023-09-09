@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { MoviesService } from '../movies/movies.service';
+import { MoviesService } from '../services/movies.service';
 import { Movie } from '../movies/movie.model';
 import { Router } from '@angular/router';
-import { LoginService } from '../login/login.service';
-import { UsersService } from '../user/users.service';
+import { UsersService } from '../services/users.service';
+import { LoginService } from '../services/login.service';
 
 @Component({
   selector: 'app-catalog-screen',
@@ -14,13 +14,22 @@ export class CatalogScreenComponent implements OnInit{
 
   moviesList: Movie[] = [];
   loading: boolean = true;
+  username?: string;
 
   constructor(private movieService: MoviesService, private router: Router, private loginService: LoginService, private usersService: UsersService) {
     
   }
 
   ngOnInit(): void {
-    console.log(this.usersService.getUsers());
+    this.getMovies();
+    this.getUsername();
+  }
+  getUsername()
+  {
+    this.username = this.usersService.getCurrentUsername();
+  }
+  getMovies()
+  {
     this.movieService.getMovies().then((resolvedValue: any) => {
       this.moviesList = resolvedValue.results;
       this.loading = false;
