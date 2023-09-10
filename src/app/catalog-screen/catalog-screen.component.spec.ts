@@ -72,7 +72,7 @@ describe('CatalogScreenComponent', () => {
     });
   }));
 
-  it('should have the list of movies and initialized correctly', async(() => {
+  it('should have the list of movies and initialized correctly', waitForAsync(() => {
     fixture.detectChanges();
 
     fixture.whenStable().then(() => {
