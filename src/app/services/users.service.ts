@@ -32,7 +32,8 @@ export class UsersService
     {
         const u: any = sessionStorage.getItem('user');
         const user = JSON.parse(u);
-
+        if(u === null)
+            return '';
         return user.username;
     }
     getCurrentUser(): number

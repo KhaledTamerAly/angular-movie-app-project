@@ -59,3 +59,9 @@ label {
 p {
   color: white;
 }
+
+@media (max-width: 780px) {
+  .button-login {
+    margin-left: 42%;
+  }
+}

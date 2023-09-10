@@ -39,7 +39,9 @@ export class LoginScreenComponent implements OnInit{
   signup(event: any) {
     const response: string = this.loginService.signup(event.value);
     if(response === 'exists')
-       this.translate.get(['failAlreadyExists']).subscribe(trans => this.failureMessage = trans);
+       this.translate.get(['failAlreadyExists']).subscribe(trans => {
+      this.failureMessage = trans.failAlreadyExists;
+      ;});
     else
       { 
         this.failureMessage = null;
@@ -48,12 +50,13 @@ export class LoginScreenComponent implements OnInit{
 
    }
   login(event: any) {
-    console.log(event);
    const response: string = this.loginService.login(event.value);
    if(response === 'not found')
-      this.translate.get(['failNotExists']).subscribe(trans => this.failureMessage = trans);
+      this.translate.get(['failNotExists']).subscribe(trans => {
+        this.failureMessage = trans.failNotExists;});
     else if(response === 'failure')
-      this.translate.get(['failPassword']).subscribe(trans => this.failureMessage = trans);
+      this.translate.get(['failPassword']).subscribe(trans => {
+        this.failureMessage = trans.failPassword;});
     else
       this.failureMessage = null;
   }
