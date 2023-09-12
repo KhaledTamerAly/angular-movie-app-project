@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { MoviesService } from '../services/movies.service';
-import { Movie } from '../movies/movie.model';
+import { MoviesService } from '../../services/movies.service';
+import { Movie } from '../../models/movie.model';
 import { Router } from '@angular/router';
-import { UsersService } from '../services/users.service';
-import { LoginService } from '../services/login.service';
+import { UsersService } from '../../services/users.service';
+import { LoginService } from '../../services/login.service';
 
 @Component({
   selector: 'app-watchlist-screen',

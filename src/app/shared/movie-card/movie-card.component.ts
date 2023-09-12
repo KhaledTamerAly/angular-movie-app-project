@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Movie } from '../movies/movie.model';
-import { MoviesService } from '../services/movies.service';
+import { Movie } from '../../models/movie.model';
 import { Router } from '@angular/router';
 
 @Component({
@@ -14,7 +13,7 @@ export class MovieCardComponent {
   constructor(private router: Router) {}
 
   goToDetails() {
-    sessionStorage.setItem('path', '/movie/'+this.movie?.id);
-    this.router.navigate(['/movie', this.movie?.id]);
+    sessionStorage.setItem('path', '/catalog/movie/'+this.movie?.id);
+    this.router.navigate(['/catalog/movie', this.movie?.id]);
   }
 }

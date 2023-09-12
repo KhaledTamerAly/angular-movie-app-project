@@ -10,10 +10,7 @@
                 </button>
             </div>
             <div class="col-xs-4">
-                <button *ngIf='isLogin' (click)="switch()" class="btn btn-success col-xs-1" style="float: right;">
-                    {{"buttonSignUp" | translate}}
-                </button>
-                <button *ngIf='!isLogin' (click)="switch()" class="btn btn-success col-xs-1" style="float: right;">
+                <button (click)="switch()" class="btn btn-success col-xs-1" style="float: right;">
                     {{"buttonLogin" | translate}}
                 </button>
             </div>
@@ -55,11 +52,8 @@
                     
                     <div class="row">
                         <div class="col-xs-12">
-                           <button *ngIf="!isLogin" type="submit" class="btn btn-primary button-login" [disabled]="!form.valid">
+                           <button type="submit" class="btn btn-primary button-login" [disabled]="!form.valid">
                             {{"buttonSignUp" | translate}}
-                            </button>
-                            <button *ngIf="isLogin" type="submit" class="btn btn-primary button-login" [disabled]="!form.valid">
-                                {{"buttonLogin" | translate}}
                             </button>
                         </div>
                     </div>

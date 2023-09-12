@@ -1,5 +1,5 @@
 import { EventEmitter } from "@angular/core";
-import { Movie } from "../movies/movie.model";
+import { Movie } from "../models/movie.model";
 
 const headers = {
     accept: 'application/json',

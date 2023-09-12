@@ -2,12 +2,12 @@ import { ComponentFixture, TestBed, async, fakeAsync, tick, waitForAsync } from 
 import { of } from 'rxjs';
 
 import { CatalogScreenComponent } from './catalog-screen.component';
-import { MoviesService } from '../services/movies.service';
-import { LoginService } from '../services/login.service';
+import { MoviesService } from '../../services/movies.service';
+import { LoginService } from '../../services/login.service';
 import { HttpClient, HttpHandler } from '@angular/common/http';
-import { Movie } from '../movies/movie.model';
-import { MovieCardComponent } from '../movie-card/movie-card.component';
-import { UsersService } from '../services/users.service';
+import { Movie } from '../../models/movie.model';
+import { MovieCardComponent } from '../../shared/movie-card/movie-card.component';
+import { UsersService } from '../../services/users.service';
 import { MatProgressSpinner } from '@angular/material/progress-spinner';
 const movie: Movie = {
   adult: false,

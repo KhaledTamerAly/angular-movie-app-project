@@ -1,0 +1,69 @@
+<div class="background-container">
+    <div class="background"></div>
+    
+    <div class="container-fluid" dir="ltr">
+    
+        <div class="row button-row">
+            <div class="col-xs-8">
+                <button class="btn btn-primary" (click)="changeLang()">
+                    {{"lang" | translate}}
+                </button>
+            </div>
+            <div class="col-xs-4">
+                <button (click)="switch()" class="btn btn-success col-xs-1" style="float: right;">
+                    {{"buttonSignUp" | translate}}
+                </button>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="container-fluid form-container">
+                <form class="form-class" (ngSubmit)="submit(form)" #form="ngForm">
+                    <div class="form-group row" #rootDiv>
+                        <div class="col-xs-2 label-class">
+                            <label for="username">{{"username" | translate}}</label>
+                        </div>
+                        <div class="col-xs-3 input-class">
+                            <input class="form-control input" id="username" ngModel name="username" required username #username="ngModel">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group row" #rootDiv>
+                        <div class="col-xs-2 label-class">
+                            <label for="email">{{"email" | translate}}</label>
+                        </div>
+                        <div class="col-xs-3 input-class">
+                            <input class="form-control input" id="email" ngModel name="email" required email #email="ngModel">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <p class="help-block" *ngIf="!email.valid && email.touched"> {{"emailFail" | translate}}</p>
+                        </div>
+                    </div>
+                    <div class="form-group row" #rootDiv>
+                        <div class="col-xs-2 label-class">
+                            <label for="password">{{"password" | translate}}</label>
+                        </div>
+                        <div class="col-xs-3 input-class">
+                            <input class="form-control input" type="password" id="password" ngModel name="password" required>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <button type="submit" class="btn btn-primary button-login" [disabled]="!form.valid">
+                                {{"buttonLogin" | translate}}
+                            </button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <p class="help-block" *ngIf="failureMessage">{{failureMessage}}</p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

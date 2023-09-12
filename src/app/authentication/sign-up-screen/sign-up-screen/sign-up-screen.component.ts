@@ -1,19 +1,17 @@
 import { Component, ElementRef, OnInit, QueryList, Renderer2, ViewChildren } from '@angular/core';
 import { Router } from '@angular/router';
-import { UsersService } from '../services/users.service';
-import { LoginService } from '../services/login.service';
 import { TranslateService } from '@ngx-translate/core';
+import { LoginService } from 'src/app/services/login.service';
+import { UsersService } from 'src/app/services/users.service';
 
 @Component({
-  selector: 'app-login-screen',
-  templateUrl: './login-screen.component.html',
-  styleUrls: ['./login-screen.component.css']
+  selector: 'app-sign-up-screen',
+  templateUrl: './sign-up-screen.component.html',
+  styleUrls: ['./sign-up-screen.component.css']
 })
-export class LoginScreenComponent implements OnInit{
-
+export class SignUpScreenComponent {
   failureMessage: string | null = null;
-  isLangEnglish: boolean = true; 
-  isLogin: boolean = true;
+  isLangEnglish: boolean = true;
   @ViewChildren('rootDiv') divs?: QueryList<ElementRef>;
 
   constructor(private loginService: LoginService, private renderer: Renderer2, private router: Router, private userService: UsersService, public translate: TranslateService){
@@ -31,12 +29,6 @@ export class LoginScreenComponent implements OnInit{
   }
   submit(event: any)
   {
-    if(this.isLogin)
-      this.login(event);
-    else
-      this.signup(event);
-  }
-  signup(event: any) {
     const response: string = this.loginService.signup(event.value);
     if(response === 'exists')
        this.translate.get(['failAlreadyExists']).subscribe(trans => {
@@ -45,23 +37,14 @@ export class LoginScreenComponent implements OnInit{
     else
       { 
         this.failureMessage = null;
-        this.isLogin = true;
+        this.switch();
       }
-
-   }
-  login(event: any) {
-   const response: string = this.loginService.login(event.value);
-   if(response === 'not found')
-      this.translate.get(['failNotExists']).subscribe(trans => {
-        this.failureMessage = trans.failNotExists;});
-    else if(response === 'failure')
-      this.translate.get(['failPassword']).subscribe(trans => {
-        this.failureMessage = trans.failPassword;});
-    else
-      this.failureMessage = null;
   }
+  
+  
   switch()
   {
-    this.isLogin = !this.isLogin;
+    this.router.navigate(['']);
   }
+
 }
