@@ -1,5 +1,6 @@
 import { EventEmitter } from "@angular/core";
 import { Movie } from "../models/movie.model";
+import { environment } from "src/environments/environment.development";
 
 const headers = {
     accept: 'application/json',
@@ -13,7 +14,7 @@ export class MoviesService {
             method: 'GET',
             headers: headers
           };
-          let movies = await fetch('https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1', options);
+          let movies = await fetch(environment.apiUrl, options);
           movies = await movies.json();
           return movies;
     }
