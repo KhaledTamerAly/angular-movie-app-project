@@ -1,30 +1,11 @@
 .catalog {
     background-color: black;
 }
-h3 {
-    color: whitesmoke;
-}
 .movies {
     margin-left: 6%;
     display: flex;
     flex-wrap: wrap;
 }
-.spinner {
-    width: 50%;
-    margin: 0px auto;
-    padding-top: 20%;
-    padding-bottom: 20%;
-}
-.spinner mat-progress-spinner {
-    width: 50%;
-    margin: 0px auto;
-}
-
 .btn {
     margin-top: 10px;
-}
-.background {
-    background-color: black;
-    width: 100%;
-    height: 100%;
 }

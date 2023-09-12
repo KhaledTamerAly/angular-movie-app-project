@@ -22,10 +22,6 @@ input.ng-invalid.ng-touched {
     transform: translate3d(-1692px, 0, 0);
   }
 }
-
-.btn {
-  width: 80px;
-}
 .button-row {
   margin: 1%;
 }
