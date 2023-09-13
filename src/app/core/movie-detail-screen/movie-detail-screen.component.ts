@@ -19,7 +19,9 @@ export class MovieDetailScreenComponent implements OnInit{
 
   constructor(private movieService: MoviesService, private route: ActivatedRoute, private router: Router, private usersService: UsersService){
   }
-
+  ngOnInit(): void {
+    this.getMovieDetails();
+  }
   onHover()
   {
     this.hoveringOverPoster = true;
@@ -28,9 +30,7 @@ export class MovieDetailScreenComponent implements OnInit{
   {
     this.hoveringOverPoster = false;
   }
-  ngOnInit(): void {
-    this.getMovieDetails();
-  }
+  
   getMovieDetails()
   {
     let movieId = this.route.snapshot.params['id'];

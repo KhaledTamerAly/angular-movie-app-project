@@ -8,7 +8,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { CommonModule } from '@angular/common';
 import { AuthModule } from './authentication/auth.module';
 import { SharedModule } from './shared/shared.module';
-import { GuardService } from './services/guard.service';
+import { GuardService } from './authentication/guards/guard.service';
 import { LoginService } from './services/login.service';
 import { MoviesService } from './services/movies.service';
 import { UsersService } from './services/users.service';

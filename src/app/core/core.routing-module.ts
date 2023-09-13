@@ -1,6 +1,6 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
-import { GuardService } from "../services/guard.service";
+import { GuardService } from "../authentication/guards/guard.service";
 import { CatalogScreenComponent } from "./catalog-screen/catalog-screen.component";
 import { HomeScreenComponent } from "./home-page-screen/home-screen/home-screen.component";
 import { MovieDetailScreenComponent } from "./movie-detail-screen/movie-detail-screen.component";

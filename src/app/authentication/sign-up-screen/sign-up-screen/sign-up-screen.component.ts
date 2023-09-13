@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, QueryList, Renderer2, ViewChildren } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, OnInit, QueryList, Renderer2, ViewChildren} from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { LoginService } from 'src/app/services/login.service';
@@ -15,18 +15,29 @@ export class SignUpScreenComponent {
   @ViewChildren('formRow') divs?: QueryList<ElementRef>;
   isEnglish?: boolean;
 
-  constructor(private loginService: LoginService, private renderer: Renderer2, private router: Router, private userService: UsersService, public translate: TranslateService){
+  constructor(private loginService: LoginService, 
+    private renderer: Renderer2, 
+    private router: Router, 
+    private userService: UsersService, 
+    public translate: TranslateService,
+    private cd: ChangeDetectorRef){
   }
   ngOnInit()
   {
     this.userService.initUsers();
+  }
+  ngAfterViewInit()
+  {
     this.setCurrentLang();
+    this.cd.detectChanges();
   }
   setCurrentLang()
   {
-    if(this.translate.currentLang === 'en')
+    const currentLang = sessionStorage.getItem('lang');
+    if(currentLang === null || currentLang === 'en')
     { 
       this.isEnglish = true;
+      this.translate.use('en');
       this.divs?.forEach(div=>{
         this.renderer.setAttribute(div.nativeElement, 'dir', 'ltr');
       });
@@ -34,6 +45,7 @@ export class SignUpScreenComponent {
     else
     {  
       this.isEnglish = false;
+      this.translate.use('ar');
       this.divs?.forEach(div=>{
         this.renderer.setAttribute(div.nativeElement, 'dir', 'rtl');
       });
@@ -45,6 +57,7 @@ export class SignUpScreenComponent {
     {
       this.isEnglish = false;
       this.translate.use('ar');
+      sessionStorage.setItem('lang','ar');
       this.divs?.forEach(div=>{
         this.renderer.setAttribute(div.nativeElement, 'dir', 'rtl');
       });
@@ -53,6 +66,7 @@ export class SignUpScreenComponent {
     {  
       this.isEnglish = true;
       this.translate.use('en');
+      sessionStorage.setItem('lang','en');
       this.divs?.forEach(div=>{
         this.renderer.setAttribute(div.nativeElement, 'dir', 'ltr');
       });
@@ -76,7 +90,6 @@ export class SignUpScreenComponent {
   switch()
   {
     this.router.navigate(['']);
-    this.translate.use('en');
   }
 
 }
