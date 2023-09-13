@@ -16,7 +16,7 @@
                 <p>{{movie?.vote_average}}</p>
             </div>
         </div>
-        <div class="col-xs-8">
+        <div class="col-xs-12">
             <img *ngIf="!loading" class="backdrop" [src]="'https://image.tmdb.org/t/p/original/'+movie?.backdrop_path">
             <h3 *ngIf="!loading">{{'" '+ movie?.tagline+ ' "'}}</h3>
             <div class="posterHover" (mouseenter)="onHover()" (mouseleave)="onLeave()" (click)="addToWatchList()">
