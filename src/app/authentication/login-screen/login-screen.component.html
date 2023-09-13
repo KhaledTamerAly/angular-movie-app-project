@@ -19,20 +19,20 @@
         <div class="row">
             <div class="container-fluid form-container">
                 <form class="form-class" (ngSubmit)="submit(form)" #form="ngForm">
-                    <div class="form-group row" #rootDiv>
-                        <div class="col-xs-2 label-class">
-                            <label for="username">{{"username" | translate}}</label>
+                    <div class="form-group row" #formRow>
+                        <div class="col-xs-2" [ngClass]="{'label-class-en': isEnglish, 'label-class-ar': !isEnglish}">
+                            <label for="username" [ngClass]="{'label-en': isEnglish, 'label-ar': !isEnglish}">{{"username" | translate}}</label>
                         </div>
-                        <div class="col-xs-3 input-class">
+                        <div class="col-xs-3" [ngClass]="{'input-class-en': isEnglish, 'input-class-ar': !isEnglish}">
                             <input class="form-control input" id="username" ngModel name="username" required username #username="ngModel">
                         </div>
                     </div>
                     
-                    <div class="form-group row" #rootDiv>
-                        <div class="col-xs-2 label-class">
-                            <label for="email">{{"email" | translate}}</label>
+                    <div class="form-group row" #formRow>
+                        <div class="col-xs-2" [ngClass]="{'label-class-en': isEnglish, 'label-class-ar': !isEnglish}">
+                            <label for="email" [ngClass]="{'label-en': isEnglish, 'label-ar': !isEnglish}">{{"email" | translate}}</label>
                         </div>
-                        <div class="col-xs-3 input-class">
+                        <div class="col-xs-3" [ngClass]="{'input-class-en': isEnglish, 'input-class-ar': !isEnglish}">
                             <input class="form-control input" id="email" ngModel name="email" required email #email="ngModel">
                         </div>
                     </div>
@@ -41,11 +41,11 @@
                             <p class="help-block" *ngIf="!email.valid && email.touched"> {{"emailFail" | translate}}</p>
                         </div>
                     </div>
-                    <div class="form-group row" #rootDiv>
-                        <div class="col-xs-2 label-class">
-                            <label for="password">{{"password" | translate}}</label>
+                    <div class="form-group row" #formRow>
+                        <div class="col-xs-2" [ngClass]="{'label-class-en': isEnglish, 'label-class-ar': !isEnglish}">
+                            <label for="password" [ngClass]="{'label-en': isEnglish, 'label-ar': !isEnglish}">{{"password" | translate}}</label>
                         </div>
-                        <div class="col-xs-3 input-class">
+                        <div class="col-xs-3" [ngClass]="{'input-class-en': isEnglish, 'input-class-ar': !isEnglish}">
                             <input class="form-control input" type="password" id="password" ngModel name="password" required>
                         </div>
                     </div>

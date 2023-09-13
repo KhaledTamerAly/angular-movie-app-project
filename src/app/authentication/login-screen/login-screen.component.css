@@ -26,11 +26,18 @@ input.ng-invalid.ng-touched {
   margin: 1%;
 }
 
-.label-class {
+.label-class-en {
   left: 20%;
 }
-.input-class {
+.input-class-en {
   left: 20%;
+}
+
+.label-class-ar {
+  left: -22%;
+}
+.input-class-ar {
+  left: -22%;
 }
 
 .input {
@@ -39,8 +46,12 @@ input.ng-invalid.ng-touched {
 .button-login {
   margin-left: 45%;
 }
-label {
+.label-en {
   float: right;
+  color: white;
+}
+.label-ar {
+  float: left;
   color: white;
 }
 
@@ -55,6 +66,12 @@ label {
 p {
   color: white;
 }
+
+.form-group {
+  display: flex;
+  flex-direction: row;
+}
+
 
 @media (max-width: 780px) {
   .button-login {
