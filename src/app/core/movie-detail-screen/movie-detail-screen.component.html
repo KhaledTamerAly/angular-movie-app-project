@@ -1,11 +1,17 @@
-<div class="detail">
+<div class="detail container-fluid">
     <div class="spinner" *ngIf="this.loading"><mat-progress-spinner mode="indeterminate"></mat-progress-spinner></div>
-    <img *ngIf="!loading" class="backdrop" [src]="'https://image.tmdb.org/t/p/original/'+movie?.backdrop_path">
-    <h3 *ngIf="!loading">{{'" '+ movie?.tagline+ ' "'}}</h3>
-    <div class="posterHover" (mouseenter)="onHover()" (mouseleave)="onLeave()" (click)="addToWatchList()">
-        <div *ngIf="!hoveringOverPoster && !loading" class="posterAdd"><h4>{{isAdded ? 'In Watchlist': 'Add to watch list'}}</h4></div>
-        <img *ngIf="!loading" class="poster" [src]="'https://image.tmdb.org/t/p/original/'+movie?.poster_path">
+    
+    <div class="row">
+        <div class="col-xs-12">
+            <img *ngIf="!loading" class="backdrop" [src]="'https://image.tmdb.org/t/p/original/'+movie?.backdrop_path">
+            <h3 *ngIf="!loading">{{'" '+ movie?.tagline+ ' "'}}</h3>
+            <div class="posterHover" (mouseenter)="onHover()" (mouseleave)="onLeave()" (click)="addToWatchList()">
+                <div *ngIf="!hoveringOverPoster && !loading" class="posterAdd"><h4>{{isAdded ? 'In Watchlist': 'Add to watch list'}}</h4></div>
+                <img *ngIf="!loading" class="poster" [src]="'https://image.tmdb.org/t/p/original/'+movie?.poster_path">
+            </div>
+        </div>
     </div>
+    
     
     <div *ngIf="!loading" class="info">
         <p>{{movie?.title}}</p>
@@ -19,7 +25,12 @@
         <p>{{movie?.original_language}}</p>
         <p>{{movie?.vote_average}}</p>
     </div>
-    <div class="button">
-        <button class="btn btn-primary" (click)="goToCatalog()">Catalog</button>
+    
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="button">
+                <button class="btn btn-primary" (click)="goToCatalog()">Catalog</button>
+            </div>
+        </div>
     </div>
 <div>

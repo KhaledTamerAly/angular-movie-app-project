@@ -97,10 +97,3 @@ p {
   display: flex;
   flex-direction: row;
 }
-
-
-@media (max-width: 780px) {
-  .button-login {
-    margin-left: 42%;
-  }
-}
