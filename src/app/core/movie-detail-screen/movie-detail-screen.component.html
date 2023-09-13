@@ -2,7 +2,21 @@
     <div class="spinner" *ngIf="this.loading"><mat-progress-spinner mode="indeterminate"></mat-progress-spinner></div>
     
     <div class="row">
-        <div class="col-xs-12">
+        <div class="col-xs-4">
+            <div *ngIf="!loading" class="info">
+                <p>{{movie?.title}}</p>
+                <p *ngIf="movie?.adult">18+</p>
+                <p><span *ngFor="let genre of genre_list">{{genre.name}}</span></p>
+                <p>{{movie?.overview}}</p>
+                <p>{{movie?.release_date}}</p>
+                <p>{{movie?.budget + ' $'}}</p>
+                <p>{{movie?.revenue + ' $'}}</p>
+                <p>{{movie?.runtime + ' mins'}}</p>
+                <p>{{movie?.original_language}}</p>
+                <p>{{movie?.vote_average}}</p>
+            </div>
+        </div>
+        <div class="col-xs-8">
             <img *ngIf="!loading" class="backdrop" [src]="'https://image.tmdb.org/t/p/original/'+movie?.backdrop_path">
             <h3 *ngIf="!loading">{{'" '+ movie?.tagline+ ' "'}}</h3>
             <div class="posterHover" (mouseenter)="onHover()" (mouseleave)="onLeave()" (click)="addToWatchList()">
@@ -10,20 +24,6 @@
                 <img *ngIf="!loading" class="poster" [src]="'https://image.tmdb.org/t/p/original/'+movie?.poster_path">
             </div>
         </div>
-    </div>
-    
-    
-    <div *ngIf="!loading" class="info">
-        <p>{{movie?.title}}</p>
-        <p *ngIf="movie?.adult">18+</p>
-        <p><span *ngFor="let genre of genre_list">{{genre.name}}</span></p>
-        <p>{{movie?.overview}}</p>
-        <p>{{movie?.release_date}}</p>
-        <p>{{movie?.budget + ' $'}}</p>
-        <p>{{movie?.revenue + ' $'}}</p>
-        <p>{{movie?.runtime + ' mins'}}</p>
-        <p>{{movie?.original_language}}</p>
-        <p>{{movie?.vote_average}}</p>
     </div>
     
     <div class="row">
