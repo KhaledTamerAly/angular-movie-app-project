@@ -1,12 +1,12 @@
 {
-    "lang": "عربي",
-    "username":"Name",
-    "email": "Email",
-    "password": "Password",
-    "emailFail": "Enter a correct email",
-    "failAlreadyExists": "User already exist",
-    "failNotExists": "User does not exist",
-    "failPassword": "Incorrect password",
-    "buttonSignUp": "Sign up",
-    "buttonLogin": "Log in"
+    "LANG": "عربي",
+    "USERNAME":"Name",
+    "EMAIL": "Email",
+    "PASSWORD": "PASSWORD",
+    "EMAILFAIL": "Enter a correct email",
+    "FAILALREADYEXISTS": "User already exist",
+    "FAILNOTEXISTS": "User does not exist",
+    "FAILPASSWORD": "Incorrect password",
+    "BUTTONSIGNUP": "Sign up",
+    "BUTTONLOGIN": "Log in"
 }

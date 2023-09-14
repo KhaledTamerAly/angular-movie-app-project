@@ -80,5 +80,12 @@ describe('CatalogScreenComponent', () => {
       expect(component.moviesList).toEqual([movie]);
     });
   }));
+
+  it('should have the list of movies and initialized correctly', waitForAsync(() => {
+    fixture.componentInstance.moviesList = [movie];
+    fixture.detectChanges();
+    const movieCard = fixture.debugElement.nativeElement.querySelectorAll('app-movie-card');
+    expect(movieCard[0].textContent).toContain(component.moviesList[0].title);
+  }));
 });
 

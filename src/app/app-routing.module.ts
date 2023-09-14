@@ -5,7 +5,8 @@ import { SignUpScreenComponent } from './authentication/sign-up-screen/sign-up-s
 const routes: Routes = [
   {path: '', component: LoginScreenComponent},
   {path: 'signup', component: SignUpScreenComponent},
-  {path: 'catalog', loadChildren:()=> import('./core/core.module').then(mod => mod.CoreModule)}
+  {path: 'catalog', loadChildren:()=> import('./core/core.module').then(mod => mod.CoreModule)},
+  {path: '**', redirectTo:''}
 ];
 
 @NgModule({

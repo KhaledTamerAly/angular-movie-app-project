@@ -13,7 +13,6 @@ export class LoginService {
     login(credntials: {username:string, email: string, password: string})
     {
         const users = this.usersService.getUsers();
-        debugger;
         for(let user of users)
         {
             if(user.email === credntials.email && user.username === credntials.username)

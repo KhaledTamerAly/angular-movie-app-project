@@ -6,14 +6,14 @@
                 <button class="btn btn-success" (click)="goToWatchlist()">Watchlist</button>
             </div>
         </div>
-        <div class="col-xs-4 center-title"><h3>Top Rated Movies of all Time</h3></div>
+        <div class="col-xs-4 center-title"><h3>{{title}}</h3></div>
         <div class="col-xs-2">
             <div class="buttonBar">
                 <button class="btn btn-primary" (click)="goToLogin()">Log out</button>
             </div>
         </div>
     </div>
-    <div class="spinner" *ngIf="this.loading"><mat-progress-spinner mode="indeterminate"></mat-progress-spinner></div>
+    <div class="coreModule-spinner" *ngIf="this.loading"><mat-progress-spinner class="override-spinner" mode="indeterminate"></mat-progress-spinner></div>
     
     <div class="movies row">
         <div *ngFor="let movie of moviesList; let i = index" class="movieRow">

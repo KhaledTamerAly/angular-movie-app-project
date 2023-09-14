@@ -77,11 +77,11 @@ export class LoginScreenComponent implements OnInit{
   {
     const response: string = this.loginService.login(event.value);
     if(response === 'not found')
-       this.translate.get(['failNotExists']).subscribe(trans => {
-         this.failureMessage = trans.failNotExists;});
+       this.translate.get(['FAILNOTEXISTS']).subscribe(trans => {
+         this.failureMessage = trans.FAILNOTEXISTS;});
      else if(response === 'failure')
-       this.translate.get(['failPassword']).subscribe(trans => {
-         this.failureMessage = trans.failPassword;});
+       this.translate.get(['FAILPASSWORD']).subscribe(trans => {
+         this.failureMessage = trans.FAILPASSWORD;});
      else
        this.failureMessage = null;
   }

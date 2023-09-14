@@ -76,8 +76,8 @@ export class SignUpScreenComponent {
   {
     const response: string = this.loginService.signup(event.value);
     if(response === 'exists')
-       this.translate.get(['failAlreadyExists']).subscribe(trans => {
-      this.failureMessage = trans.failAlreadyExists;
+       this.translate.get(['FAILALREADYEXISTS']).subscribe(trans => {
+      this.failureMessage = trans.FAILALREADYEXISTS;
       ;});
     else
       { 

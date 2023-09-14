@@ -6,12 +6,12 @@
         <div class="row button-row">
             <div class="col-xs-8">
                 <button class="btn btn-primary" (click)="changeLang()">
-                    {{"lang" | translate}}
+                    {{"LANG" | translate}}
                 </button>
             </div>
             <div class="col-xs-4">
                 <button (click)="switch()" class="btn btn-success col-xs-1" style="float: right;">
-                    {{"buttonLogin" | translate}}
+                    {{"BUTTONLOGIN" | translate}}
                 </button>
             </div>
         </div>
@@ -22,7 +22,7 @@
                     
                     <div class="form-group row test">
                         <div class="col-xs-12 label-class">
-                            <label for="username" [ngClass]="{'label-en': isEnglish, 'label-ar': !isEnglish}">{{"username" | translate}}</label>
+                            <label for="username" [ngClass]="{'label-en': isEnglish, 'label-ar': !isEnglish}">{{"USERNAME" | translate}}</label>
                         </div>
                     </div>
                     <div class="form-group row" #formRow>
@@ -32,7 +32,7 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-xs-12 label-class">
-                            <label for="email" [ngClass]="{'label-en': isEnglish, 'label-ar': !isEnglish}">{{"email" | translate}}</label>
+                            <label for="email" [ngClass]="{'label-en': isEnglish, 'label-ar': !isEnglish}">{{"EMAIL" | translate}}</label>
                         </div>
                     </div>
                     <div class="form-group row" #formRow>
@@ -42,12 +42,12 @@
                     </div>
                     <div class="row">
                         <div class="col-xs-12">
-                            <p class="help-block" *ngIf="!email.valid && email.touched"> {{"emailFail" | translate}}</p>
+                            <p class="help-block" *ngIf="!email.valid && email.touched"> {{"EMAILFAIL" | translate}}</p>
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-xs-12 label-class" >
-                            <label [ngClass]="{'label-en': isEnglish, 'label-ar': !isEnglish}">{{"password" | translate}}</label>
+                            <label [ngClass]="{'label-en': isEnglish, 'label-ar': !isEnglish}">{{"PASSWORD" | translate}}</label>
                         </div>
                     </div>
                     <div class="form-group row" #formRow>
@@ -58,7 +58,7 @@
                     <div class="form-group row">
                         <div class="col-xs-12 button-login">
                             <button type="submit" class="btn btn-primary" [disabled]="!form.valid">
-                                {{"buttonLogin" | translate}}
+                                {{"BUTTONLOGIN" | translate}}
                             </button>
                         </div>
                     </div>

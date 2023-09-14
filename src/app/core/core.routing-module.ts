@@ -16,6 +16,9 @@ const routes: Routes = [
       {path: 'movie/:id', component: MovieDetailScreenComponent},
       {path: 'watchlist',component: WatchlistScreenComponent}
     ]
+  },
+  {
+    path: '**', redirectTo:''
   }
 ];
 
