@@ -2,10 +2,26 @@
     background-color: black;
 }
 .movies {
-    margin-left: 6%;
     display: flex;
     flex-wrap: wrap;
 }
 .btn {
     margin-top: 10px;
+}
+.center-title {
+    text-align: center;
+    margin: 0 auto;
+}
+.buttonBar {
+    width: fit-content;
+    margin: 0 auto;
+}
+.movieRow {
+    width: fit-content;
+    margin: 0 auto;
+}
+@media (max-width: 780px) {
+    h3 {
+        font-size: 90%;
+    }
 }

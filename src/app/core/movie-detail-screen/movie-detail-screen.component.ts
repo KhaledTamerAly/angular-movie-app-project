@@ -14,7 +14,6 @@ export class MovieDetailScreenComponent implements OnInit{
   movie?: Movie;
   genre_list?: {id: number, name: string}[];
   loading: boolean = true;
-  hoveringOverPoster: boolean = false;
   isAdded: boolean = false;
 
   constructor(private movieService: MoviesService, private route: ActivatedRoute, private router: Router, private usersService: UsersService){
@@ -22,15 +21,6 @@ export class MovieDetailScreenComponent implements OnInit{
   ngOnInit(): void {
     this.getMovieDetails();
   }
-  onHover()
-  {
-    this.hoveringOverPoster = true;
-  }
-  onLeave()
-  {
-    this.hoveringOverPoster = false;
-  }
-  
   getMovieDetails()
   {
     let movieId = this.route.snapshot.params['id'];
